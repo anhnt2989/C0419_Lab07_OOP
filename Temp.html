@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xây dựng lớp mô tả Temperature</title>
+</head>
+<body>
+            <script>
+                let Temperature = function (Celcius) {
+                    this.Celcius = Celcius;
+
+                    this.toFahrenheit = function () {
+                        return Celcius*9/5 + 32;
+                    };
+                    this.toKelvin = function () {
+                        return Celcius + 273.15;
+                    }
+                };
+                let temp = new Temperature(25);
+                let F = temp.toFahrenheit();
+                let K = temp.toKelvin();
+                alert("Chuyển sang độ F = " + F + " || " + "Chuyển sang độ K = " + K);
+
+            </script>
+</body>
+</html>
