@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Di chuyển đối tượng</title>
+</head>
+<div id="game"></div>
+<body>
+            <script>
+                function Hero(image, top, left, size) {
+                    this.image = image;
+                    this.top = top;
+                    this.left = left;
+                    this.size = size;
+
+
+                    this.getHeroElement = function () {
+                        return '<img alt="" width="' + this.size + '"' +
+                            ' height="' + this.size + '"' +
+                            ' src="' + this.image + '"' +
+                            ' style="top: ' + this.top + 'px; left:' + this.left + 'px;position:absolute;" />';
+                    };
+                    this.moveRight = function () {
+                        this.left += 1;
+                        this.image = image + ".jpg";
+                    };
+                    this.moveLeft = function () {
+                        this.left -= 1;
+                        this.image = image + "-flip.jpg";
+                    };
+                    this.moveUp = function () {
+                        this.top -= 1;
+                        this.image = image + "-up.jpg";
+                    };
+                    this.moveDown = function () {
+                        this.top += 1;
+                        this.image = image + "-down.jpg";
+                    }
+                }
+
+
+                    let hero = new Hero('snail', 0, 0, 300);
+
+                    function start() {
+                        if (hero.left < window.innerWidth - hero.size && hero.top === 0) {
+                            hero.moveRight();
+                        }
+                        else if (hero.top < window.innerHeight - hero.size && hero.left === window.innerWidth - hero.size) {
+                            hero.moveDown();
+                        }
+                        else if (hero.left >=0 ) {
+                            hero.moveLeft();
+                        }
+                        else if (hero.top >= 0) {
+                            hero.moveUp();
+                        }
+                        document.getElementById('game').innerHTML = hero.getHeroElement();
+                        setTimeout(start, 10);
+                    }
+
+                start();
+            </script>
+</body>
+</html>
