@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xây dựng lớp mô tả điện thoại</title>
+</head>
+<style>
+    canvas {
+        border: 3px solid black;
+        -moz-border-radius-topleft:30px;
+        -webkit-border-top-left-radius:30px;
+
+        -moz-border-radius-bottomleft:30px;
+        -webkit-border-bottom-left-radius:30px;
+
+        -moz-border-radius-topright:30px;
+        -webkit-border-top-right-radius:30px;
+
+        -moz-border-radius-bottomright:30px;
+        -webkit-border-bottom-right-radius:30px;
+        background-color: black;
+    }
+    #input {
+        width: 265px;
+        height: 30px;
+        position: absolute;
+        top : 510px;
+        left : 25px;
+        -moz-border-radius-topleft:30px;
+        -webkit-border-top-left-radius:30px;
+
+        -moz-border-radius-bottomleft:30px;
+        -webkit-border-bottom-left-radius:30px;
+
+        -moz-border-radius-topright:30px;
+        -webkit-border-top-right-radius:30px;
+
+        -moz-border-radius-bottomright:30px;
+        -webkit-border-bottom-right-radius:30px;
+    }
+    #send {
+        width: 30px ;
+        height: 30px;
+        position: absolute;
+        top : 513px;
+        left : 261px;
+        border: 1px solid black;
+        -moz-border-radius-topleft:30px;
+        -webkit-border-top-left-radius:30px;
+
+        -moz-border-radius-bottomleft:30px;
+        -webkit-border-bottom-left-radius:30px;
+
+        -moz-border-radius-topright:30px;
+        -webkit-border-top-right-radius:30px;
+
+        -moz-border-radius-bottomright:30px;
+        -webkit-border-bottom-right-radius:30px;
+        background-color: #22ff3a;
+
+    }
+    #input1 {
+        width: 265px;
+        height: 30px;
+        position: absolute;
+        top : 530px;
+        left : 515px;
+        -moz-border-radius-topleft:30px;
+        -webkit-border-top-left-radius:30px;
+
+        -moz-border-radius-bottomleft:30px;
+        -webkit-border-bottom-left-radius:30px;
+
+        -moz-border-radius-topright:30px;
+        -webkit-border-top-right-radius:30px;
+
+        -moz-border-radius-bottomright:30px;
+        -webkit-border-bottom-right-radius:30px;
+    }
+    #send1 {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top : 533px;
+        left : 752px;
+        border: 1px solid black;
+        -moz-border-radius-topleft:30px;
+        -webkit-border-top-left-radius:30px;
+
+        -moz-border-radius-bottomleft:30px;
+        -webkit-border-bottom-left-radius:30px;
+
+        -moz-border-radius-topright:30px;
+        -webkit-border-top-right-radius:30px;
+
+        -moz-border-radius-bottomright:30px;
+        -webkit-border-bottom-right-radius:30px;
+        background-color: #22ff3a;
+    }
+    #inbox {
+        position: absolute;
+        top : 250px;
+        left : 115px;
+        -moz-border-radius-topleft:10px;
+        -webkit-border-top-left-radius:10px;
+
+        -moz-border-radius-bottomleft:10px;
+        -webkit-border-bottom-left-radius:10px;
+
+        -moz-border-radius-topright:10px;
+        -webkit-border-top-right-radius:10px;
+
+        -moz-border-radius-bottomright:10px;
+        -webkit-border-bottom-right-radius:10px;
+        background-color: #d5d3f5;
+    }
+    #outbox {
+        position: absolute;
+
+        top : 100px;
+        left : 30px;
+        -moz-border-radius-topleft:10px;
+        -webkit-border-top-left-radius:10px;
+
+        -moz-border-radius-bottomleft:10px;
+        -webkit-border-bottom-left-radius:10px;
+
+        -moz-border-radius-topright:10px;
+        -webkit-border-top-right-radius:10px;
+
+        -moz-border-radius-bottomright:10px;
+        -webkit-border-bottom-right-radius:10px;
+        background-color: #11ff78;
+    }
+    #inbox1 {
+        position: absolute;
+        top : 100px;
+        left : 520px;
+        -moz-border-radius-topleft:10px;
+        -webkit-border-top-left-radius:10px;
+
+        -moz-border-radius-bottomleft:10px;
+        -webkit-border-bottom-left-radius:10px;
+
+        -moz-border-radius-topright:10px;
+        -webkit-border-top-right-radius:10px;
+
+        -moz-border-radius-bottomright:10px;
+        -webkit-border-bottom-right-radius:10px;
+        background-color: #d5d3f5;
+    }
+    #outbox1 {
+        position: absolute;
+        top : 250px;
+        left :610px;
+        -moz-border-radius-topleft:10px;
+        -webkit-border-top-left-radius:10px;
+
+        -moz-border-radius-bottomleft:10px;
+        -webkit-border-bottom-left-radius:10px;
+
+        -moz-border-radius-topright:10px;
+        -webkit-border-top-right-radius:10px;
+
+        -moz-border-radius-bottomright:10px;
+        -webkit-border-bottom-right-radius:10px;
+        background-color: #11ff78;
+    }
+</style>
+<canvas id="myCanvas" width="300" height="600"></canvas>
+<input type="text" id="input" placeholder="Compose messages..."/>
+<input type="button" id="send" value="↑" onclick="click2Send1()">
+<textarea name="" id="inbox" cols="20" rows="7" readonly></textarea>
+<textarea name="" id="outbox" cols="20" rows="7" readonly></textarea>
+
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+<canvas id="myCanvas1" width="300" height="600"></canvas>
+<input type="text" id="input1" placeholder="Compose messages..."/>
+<input type="button" id="send1" value="↑" onclick="click2Send2()">
+<textarea name="" id="inbox1" cols="20" rows="7" readonly></textarea>
+<textarea name="" id="outbox1" cols="20" rows="7" readonly></textarea>
+<body>
+            <script>
+                function Tangle(x,y,width,height) {
+                    this.x = x;
+                    this.y = y;
+                    this.width = width;
+                    this.height = height;
+                }
+
+                function Rectangle() {
+                    let ctx = document.getElementById("myCanvas").getContext("2d");
+                    let x = 10;
+                    let y = 60;
+                    let width = 280;
+                    let height = 480;
+                    let tangle = new Tangle(x,y,width,height);
+                    ctx.rect(tangle.x,tangle.y,tangle.width,tangle.height);
+                    ctx.fillStyle = "#F0F8FF";
+                    ctx.fill();
+                }
+                Rectangle();
+
+                function Circle(x,y,r) {
+                    this.x = x;
+                    this.y = y;
+                    this.r = r;
+                }
+
+                function drawCircle() {
+                    let ctx = document.getElementById("myCanvas").getContext("2d");
+                    let circle = new Circle(150,572,23);
+                    ctx.beginPath();
+                    ctx.arc(circle.x,circle.y,circle.r,0,2*Math.PI);
+                    ctx.fillStyle = "#FFFFFF";
+                    ctx.fill();
+                }
+                drawCircle();
+
+                function drawCircle1() {
+                    let ctx = document.getElementById("myCanvas").getContext("2d");
+                    let circle = new Circle(150,572,20);
+                    ctx.beginPath();
+                    ctx.arc(circle.x,circle.y,circle.r,0,2*Math.PI);
+                    ctx.fillStyle = "#000000";
+                    ctx.fill();
+                }
+                drawCircle1();
+
+                function drawCircle2() {
+                    let ctx = document.getElementById("myCanvas").getContext("2d");
+                    let circle = new Circle(150,15,5);
+                    ctx.beginPath();
+                    ctx.arc(circle.x,circle.y,circle.r,0,2*Math.PI);
+                    ctx.fillStyle = "#FFFFFF";
+                    ctx.fill();
+                }
+                drawCircle2();
+
+                function drawCircle2x() {
+                    let ctx = document.getElementById("myCanvas").getContext("2d");
+                    let circle = new Circle(150,15,3);
+                    ctx.beginPath();
+                    ctx.arc(circle.x,circle.y,circle.r,0,2*Math.PI);
+                    ctx.fillStyle = "#FFFFFF";
+                    ctx.fill();
+                }
+                drawCircle2x();
+
+                function drawCircle3() {
+                    let ctx = document.getElementById("myCanvas").getContext("2d");
+                    let circle = new Circle(130,15,5);
+                    ctx.beginPath();
+                    ctx.arc(circle.x,circle.y,circle.r,0,2*Math.PI);
+                    ctx.fillStyle = "#FFFFFF";
+                    ctx.fill();
+                }
+                drawCircle3();
+
+                function drawCircle4() {
+                    let ctx = document.getElementById("myCanvas").getContext("2d");
+                    let circle = new Circle(105,30,7);
+                    ctx.beginPath();
+                    ctx.arc(circle.x,circle.y,circle.r,0,2*Math.PI);
+                    ctx.fillStyle = "#FFFFFF";
+                    ctx.fill();
+                }
+                drawCircle4();
+
+                function drawCircle5() {
+                    let ctx = document.getElementById("myCanvas").getContext("2d");
+                    let circle = new Circle(105,30,5);
+                    ctx.beginPath();
+                    ctx.arc(circle.x,circle.y,circle.r,0,2*Math.PI);
+                    ctx.fillStyle = "#010101";
+                    ctx.fill();
+                }
+                drawCircle5();
+
+                function Rectangle1() {
+                    let ctx = document.getElementById("myCanvas1").getContext("2d");
+                    let x = 10;
+                    let y = 60;
+                    let width = 280;
+                    let height = 510;
+                    let tangle = new Tangle(x,y,width,height);
+                    ctx.rect(tangle.x,tangle.y,tangle.width,tangle.height);
+                    ctx.fillStyle = "#F0F8FF";
+                    ctx.fill();
+                }
+                Rectangle1();
+
+            </script>
+            <script>
+                let mobile = function (name, battery) {
+                    this.name = name;
+                    this.battery = battery;
+                    this.outbox = [];
+                    this.inbox = [];
+                    this.status = true;
+                    this.mes = "";
+
+                    this.isOn = function () {
+                        this.status = status;
+                    };
+                    this.setStatusOn = function () {
+                            this.status = true;
+                    };
+
+                    this.setStatusOff = function () {
+                        this.status = false;
+                    };
+                    this.charge = function () {
+                        if (this.battery < 100) {
+                            this.battery++;
+                        }
+                    };
+                    this.composeMes = function (mes) {
+                            this.mes = mes;
+                    };
+                    this.sendMes = function (phone, mes) {
+                            phone.inbox.push(mes);
+                            this.outbox.push(mes);
+                    };
+                    this.getInbox = function () {
+                        return this.inbox;
+                    };
+
+                };
+                let iPhone = new mobile("iPhone",100);
+                let Nokia = new mobile("Nokia", 100);
+
+                function click2Send2() {
+                    let mes = document.getElementById("input1").value;
+                    Nokia.sendMes(iPhone,mes);
+                    document.getElementById("inbox").innerHTML = iPhone.getInbox();
+                    document.getElementById("outbox1").innerHTML = iPhone.getInbox();
+                }
+                function click2Send1() {
+                    let mes = document.getElementById("input").value;
+                    iPhone.sendMes(Nokia, mes);
+                    document.getElementById("outbox").innerHTML = Nokia.getInbox();
+                    document.getElementById("inbox1").innerHTML = Nokia.getInbox();
+                }
+
+            </script>
+</body>
+</html>
