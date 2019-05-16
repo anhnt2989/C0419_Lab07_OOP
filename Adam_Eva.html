@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng dụng nhỏ mô phỏng Adam và Eva</title>
+</head>
+<body>
+            <script>
+                const Apple = function (name) {
+                    this.name = name;
+                    this.weight = 10;
+                    this.isEmpty = false;
+                    
+                        this.getWeight = function () {
+                        return this.weight;
+                        };
+                };
+
+                const Human = function (name,gender, weight) {
+                    this.weight = weight;
+                    this.isMale = function () {
+                        if (gender === true) {
+                            return "Male";
+                        } else {
+                            return "Female";
+                        }
+                    };
+
+                    this.speech = function () {
+                        return ("Hello! I am " + name + ". My gender is : " + this.isMale() + ". My weight is : "
+                            + weight + "kg" );
+                    };
+
+                    // this.check = function (apple) {
+                    //     apple.getWeight();
+                    // };
+
+                    this.eat = function () {
+                        this.weight++;
+                    }
+                };
+
+
+                    // this.getInfo = function () {
+                    //     this.getInfo = [this.name,this.gender,this.weight];
+                    // }
+
+                let apple = new Apple("forbiddenFruit",10);
+                let pieces = apple.getWeight();
+                console.log("Current pieces of forbidden Fruit is : " + pieces);
+                console.log("out of pieces? " + apple.isEmpty);
+                console.log("This fruit name is : " + apple.name);
+
+                let adam = new Human("Adam",true,68);
+                console.log("Adam said : " + adam.speech());
+
+                let eva = new Human("Eva",false,55);
+                console.log("Eva said : " + eva.speech());
+
+
+                for (let i=1;i<=10;i++) {
+                    if (pieces > 0) {
+                        adam.eat();
+                        eva.eat();
+                        pieces -= 2;
+                        console.log("Current pieces of forbidden Fruit is: " + pieces);
+                        console.log("Current weight of Adam is : " + adam.weight);
+                        console.log("Current weight of Eva is : " + eva.weight);
+
+                    } else {
+                        console.log("out of pieces!");
+                    }
+                }
+            </script>
+</body>
+</html>
